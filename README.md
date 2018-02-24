@@ -13,9 +13,12 @@ nginx-php7.0-mysql  docker
     $ git clone 
     
 配置环境变量
-
+ 
     $ cp .env.back  .env
  
+创建数据库data目录
+
+    $ mkdir mysql_data
  
 启用+build
 
