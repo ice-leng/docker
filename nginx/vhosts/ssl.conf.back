@@ -1,26 +1,21 @@
 server {
-    listen 80 default_server;
-    root /app;
-    index index.html index.php;
+    listen 443 ssl;
+    listen [::]:443 ssl;
 
+    server_name discipled.me;
     charset utf-8;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
-
-    access_log off;
-    error_log  /var/log/nginx/error.log error;
-
-    sendfile off;
 
     gzip on;
     gzip_types    text/plain application/javascript application/x-javascript text/javascript text/xml text/css;
 
-    client_max_body_size 100m;
+    root /app;
+
+    ssl_certificate /etc/letsencrypt/live/discipled.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/discipled.me/privkey.pem;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
 
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
@@ -31,9 +26,5 @@ server {
         fastcgi_intercept_errors off;
         fastcgi_buffer_size 16k;
         fastcgi_buffers 4 16k;
-    }
-
-    location ~ /\.ht {
-        deny all;
     }
 }

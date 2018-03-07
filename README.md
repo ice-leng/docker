@@ -2,11 +2,14 @@ nginx-php7.0-mysql  docker
 
 使用方法：
 
-首先安装Docker, 有条件的推荐用前两个方式，老设备用Toolbox
+首先安装Docker, 有条件的推荐用前两个方式，老设备用Toolbox,对号入座
 
  - [Docker for Mac](https://docs.docker.com/docker-for-mac/)
  - [Docker for Windows](https://docs.docker.com/docker-for-windows/)
  - [Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+ - [Docker for Linux](https://docs.docker.com/install/linux/docker-ce/centos/)
+ - [Docker-compose](https://github.com/docker/compose/releases)
+ - [Letsencrypt 教程](https://www.jianshu.com/p/ddc618d42cba)
 
 下载项目
 
@@ -15,10 +18,6 @@ nginx-php7.0-mysql  docker
 配置环境变量
  
     $ cp .env.back  .env
- 
-创建数据库data目录
-
-    $ mkdir mysql_data
  
 启用+build
 
@@ -44,3 +43,5 @@ nginx-php7.0-mysql  docker
 
     //localhost 是mysql容器名字
     $ mysql:host=localhost;dbname=project 
+    
+ssl 选择的是 letsencrypt ，自行配置
