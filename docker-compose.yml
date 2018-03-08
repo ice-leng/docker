@@ -12,7 +12,6 @@ services:
             - "/log/nginx:/var/log/nginx"
             - ./nginx/letsencrypt/etc/letsencrypt:/etc/letsencrypt
             - ./nginx/letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
-            - ./letsencrypt/challenge:/app
         networks:
             - server
         depends_on:
@@ -25,7 +24,6 @@ services:
         volumes:
           - ./nginx/letsencrypt/etc/letsencrypt:/etc/letsencrypt
           - ./nginx/letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
-          - ./nginx/letsencrypt/challenge:/app
           - ./log/letsencrypt:/var/log/letsencrypt
         command: renew
 
