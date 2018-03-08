@@ -66,9 +66,7 @@ RUN chmod +x /usr/local/bin/composer \
     && composer self-update \
     && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
     && composer global require "fxp/composer-asset-plugin:^1.4.2" \
-    && composer global require --optimize-autoloader \
-               "hirak/prestissimo:${VERSION_PRESTISSIMO_PLUGIN}" && \
-           composer global dumpautoload --optimize && \
-           composer clear-cache
+    && composer clear-cache
+
 
 
