@@ -19,6 +19,21 @@ nginx-php7.0-mysql  docker
  
     $ cp .env.back  .env
  
+ 
+修改代理，对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）
+
+     {
+        "registry-mirrors": [
+          "https://registry.docker-cn.com"
+        ]
+      }
+      
+重启服务
+
+    $ sudo systemctl daemon-reload
+    $ sudo systemctl restart docker      
+  
+ 
 启用+build
 
     $ docker-compose up -d

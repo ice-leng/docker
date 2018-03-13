@@ -7,32 +7,20 @@ services:
             - 80:80
             - 443:443
         volumes:
-            - "./nginx/vhosts:/etc/nginx/conf.d:ro"
-            - "${PROJECT_ROOT}:/app:ro"
-            - "/log/nginx:/var/log/nginx"
-            - ./nginx/letsencrypt/etc/letsencrypt:/etc/letsencrypt
-            - ./nginx/letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
+            - ./nginx/vhosts:/etc/nginx/conf.d:ro
+            - ${PROJECT_ROOT}:/app:ro
+            - /log/nginx:/var/log/nginx
         networks:
             - server
         depends_on:
             - php
         restart: always
-
-    letsencrypt:
-        image: deliverous/certbot
-        container_name: certbot
-        volumes:
-          - ./nginx/letsencrypt/etc/letsencrypt:/etc/letsencrypt
-          - ./nginx/letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
-          - ./log/letsencrypt:/var/log/letsencrypt
-        command: renew
-
     php:
         build: ./php/
         expose:
             - 9000
         volumes:
-            - "${PROJECT_ROOT}:/app"
+            - ${PROJECT_ROOT}:/app
         networks:
             - database
             - server
