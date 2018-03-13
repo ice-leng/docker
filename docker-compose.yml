@@ -3,6 +3,7 @@ version: "2.1"
 services:
     nginx:
         build: ./nginx/
+        container_name: nginx
         ports:
             - 80:80
             - 443:443
@@ -17,10 +18,12 @@ services:
         restart: always
     php:
         build: ./php/
+        container_name: php
         expose:
             - 9000
         volumes:
             - ${PROJECT_ROOT}:/app
+            - /log/php:/var/log/php
         networks:
             - database
             - server
@@ -30,8 +33,10 @@ services:
 
     mysql:
         image: mysql:latest
+        container_name: mysql
         volumes:
             - ./mysql_data:/var/lib/mysql
+            - ./log/mysql:/var/log/mysql
         networks:
             - database
         ports:
@@ -45,6 +50,7 @@ services:
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
         ports:
             - 8080:80
         networks:
@@ -54,7 +60,6 @@ services:
         environment:
             PMA_HOST: mysql
         restart: always
-
 
 networks:
     database:
