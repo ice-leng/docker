@@ -59,4 +59,4 @@ nginx-php7.0-mysql  docker
     //localhost 是mysql容器名字
     $ mysql:host=localhost;dbname=project 
     
-ssl 选择的是 letsencrypt ，自行配置
+ssl 选择的是 letsencrypt ，需要自行配置
