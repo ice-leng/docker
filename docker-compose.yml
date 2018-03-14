@@ -3,7 +3,6 @@ version: "2.1"
 services:
     nginx:
         build: ./nginx/
-        container_name: nginx
         ports:
             - 80:80
             - 443:443
@@ -18,7 +17,6 @@ services:
         restart: always
     php:
         build: ./php/
-        container_name: php70-fpm
         expose:
             - 9000
         volumes:
