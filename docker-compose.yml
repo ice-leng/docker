@@ -1,47 +1,16 @@
 version: "2.1"
 
 services:
-    nginx-proxy:
-         image: jwilder/nginx-proxy
-         container_name: nginx-proxy
-         ports:
-             - 80:80
-             - 443:443
-         volumes:
-             - ./proxy/conf.d:/etc/nginx/conf.d
-             - ./proxy/vhost.d:/etc/nginx/vhost.d
-             - ./proxy/certs:/etc/nginx/certs:ro
-             - ${PROJECT_ROOT}:/usr/share/nginx/html
-             - /var/run/docker.sock:/tmp/docker.sock:ro
-             - ./log/proxy:/var/log/nginx
-         networks:
-             - proxy
-             - server
-         restart: always
-
-    docker-letsencrypt-nginx-proxy-companion:
-         image: jrcs/letsencrypt-nginx-proxy-companion
-         container_name: docker-letsencrypt-nginx-proxy-companion
-         volumes:
-             - /var/run/docker.sock:/var/run/docker.sock:ro
-             - ./proxy/certs:/etc/nginx/certs:rw
-         volumes_from:
-              - nginx-proxy
-         networks:
-             - proxy
-             - server
-         restart: always
-
-    web:
+    nginx:
         build: ./nginx/
-        container_name: web
+        container_name: nginx
+        ports:
+            - 80:80
+            - 443:443
         volumes:
             - ./nginx/vhosts:/etc/nginx/conf.d:ro
+            - ${PROJECT_ROOT}:/usr/share/nginx/html
             - ./log/nginx:/var/log/nginx
-        environment:
-            - VIRTUAL_HOST=lengbin.xyz,www.lengbin.xyz
-            - LETSENCRYPT_HOST=lengbin.xyz,www.lengbin.xyz
-            - LETSENCRYPT_EMAIL=xykxyk2008@163.com
         networks:
             - server
         depends_on:
@@ -95,4 +64,3 @@ services:
 networks:
     database:
     server:
-    proxy:
