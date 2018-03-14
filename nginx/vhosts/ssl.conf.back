@@ -1,0 +1,64 @@
+# redirect host http://domain to https://domain
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name xxx.com;
+
+    # letsencrypt challenge file location
+    location /.well-known {
+        root /usr/share/nginx/html;
+
+        access_log  /var/log/nginx/challenge-access.log  main;
+        allow all;
+    }
+
+    location / {
+        return 301 https://$server_name$request_uri;
+    }
+}
+
+# https://domain server
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name xxxx.com;
+    charset utf-8;
+
+    root /app;
+    index index.html index.php;
+
+    gzip on;
+    gzip_types    text/plain application/javascript application/x-javascript text/javascript text/xml text/css;
+
+    ssl_certificate /etc/letsencrypt/live/discipled.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/discipled.me/privkey.pem;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    access_log off;
+    error_log  /var/log/nginx/error.log error;
+
+    sendfile off;
+
+    client_max_body_size 100m;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_intercept_errors off;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+    
+}
