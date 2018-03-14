@@ -38,6 +38,10 @@ services:
         volumes:
             - ./nginx/vhosts:/etc/nginx/conf.d:ro
             - ./log/nginx:/var/log/nginx
+        environment:
+            - VIRTUAL_HOST=lengbin.xyz,www.lengbin.xyz
+            - LETSENCRYPT_HOST=lengbin.xyz,www.lengbin.xyz
+            - LETSENCRYPT_EMAIL=xykxyk2008@163.com
         networks:
             - server
         depends_on:
