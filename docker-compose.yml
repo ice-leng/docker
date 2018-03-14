@@ -18,7 +18,7 @@ services:
         restart: always
     php:
         build: ./php/
-        container_name: php:7.0-fpm
+        container_name: php70-fpm
         expose:
             - 9000
         volumes:
