@@ -1,0 +1,4 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+15 2 * */2 * /usr/bin/certbot renew --config-dir = /app/docker/nginx/ssl  >> /var/log/le-renew.log 
