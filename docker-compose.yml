@@ -30,7 +30,7 @@ services:
         restart: always
 
     mysql:
-        image: mysql:latest
+        image: mysql:5.7
         container_name: mysql
         volumes:
             - ./mysql_data:/var/lib/mysql
