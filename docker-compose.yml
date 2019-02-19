@@ -21,7 +21,7 @@ services:
             - 9000
         volumes:
             - ${PROJECT_ROOT}:/app
-            - /log/php:/var/log/php
+            - ./log/php:/var/log/php
         networks:
             - database
             - server
