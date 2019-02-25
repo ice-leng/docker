@@ -1,4 +1,4 @@
-FROM php:7.0-fpm
+FROM php:7.1-fpm
 
 COPY ./sources.list.jessie /etc/apt/sources.list
 
@@ -18,16 +18,12 @@ RUN apt-get update && \
             libfreetype6-dev \
             libjpeg-dev \
             libjpeg62-turbo-dev \
-            libmagickwand-6.q16-dev \
             libmagickwand-dev \
-            krb5-multidev \
-            comerr-dev \
             libpq-dev \
             libpng-dev \
             libxml2-dev \
             libzip-dev \
             zlib1g-dev \
-            mysql-client-5.5 \
             mysql-client \
             openssh-client \
             nano \
