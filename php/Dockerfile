@@ -18,7 +18,10 @@ RUN apt-get update && \
             libfreetype6-dev \
             libjpeg-dev \
             libjpeg62-turbo-dev \
+            libmagickwand-6.q16-dev \
             libmagickwand-dev \
+            krb5-multidev \
+            comerr-dev \
             libpq-dev \
             libpng-dev \
             libxml2-dev \
