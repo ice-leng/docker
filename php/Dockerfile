@@ -3,7 +3,6 @@ FROM php:7.0-fpm
 COPY ./sources.list.jessie /etc/apt/sources.list
 
 # Install system packages for PHP extensions recommended for Yii 2.0 Framework
-ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get -y install \
         gnupg2 && \
@@ -14,7 +13,6 @@ RUN apt-get update && \
             git \
             curl \
             imagemagick \
-            libfreetype6-dev \
             libcurl3-dev \
             libicu-dev \
             libfreetype6-dev \
@@ -24,11 +22,14 @@ RUN apt-get update && \
             libpq-dev \
             libpng-dev \
             libxml2-dev \
+            libzip-dev \
             zlib1g-dev \
             mysql-client \
             openssh-client \
             nano \
             unzip \
+            libcurl4-openssl-dev \
+            libssl-dev \
         --no-install-recommends && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
