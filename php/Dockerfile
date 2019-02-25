@@ -27,6 +27,7 @@ RUN apt-get update && \
             libxml2-dev \
             libzip-dev \
             zlib1g-dev \
+            mysql-client-5.5 \
             mysql-client \
             openssh-client \
             nano \
