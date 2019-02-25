@@ -6,7 +6,7 @@ RUN apt-get update && \
         apt-get -y install \
             gnupg2 && \
         apt-key update && \
-        apt-get update &&
+        apt-get update
 
 # Install system packages for PHP extensions recommended for Yii 2.0 Framework
 RUN apt-get -y install \
