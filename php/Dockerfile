@@ -2,13 +2,14 @@ FROM php:7.1-fpm
 
 COPY ./sources.list.jessie /etc/apt/sources.list
 
-# Install system packages for PHP extensions recommended for Yii 2.0 Framework
 RUN apt-get update && \
-    apt-get -y install \
-        gnupg2 && \
-    apt-key update && \
-    apt-get update && \
-    apt-get -y install \
+        apt-get -y install \
+            gnupg2 && \
+        apt-key update && \
+        apt-get update &&
+
+# Install system packages for PHP extensions recommended for Yii 2.0 Framework
+RUN apt-get -y install \
             g++ \
             git \
             curl \
