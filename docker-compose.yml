@@ -59,6 +59,21 @@ services:
             PMA_HOST: mysql
         restart: always
 
+    redis:
+        image: redis:alpine
+        container_name: redis
+        volumes:
+            - ./redis/redis_data:/data
+            - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+        command: redis-server /usr/local/etc/redis/redis.conf
+        ports:
+            - "6379:6379"
+        restart: always
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "1m"
+
 networks:
     database:
     server:
