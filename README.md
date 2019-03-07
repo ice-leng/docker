@@ -73,7 +73,7 @@ ssl 选择的是 letsencrypt ，需要自行配置
     
     // 配置情况 nginx/vhosts/ssl.conf.back
     
-    //certbot renew --config-dir /app/docker/nginx/ssl/ --dry-run
+    //certbot renew --config-dir=/app/docker/nginx/ssl/ --dry-run
     
     // 脚本更新
     $ crontab -e
