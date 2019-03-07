@@ -59,9 +59,9 @@ nginx-php7.0-mysql  docker
     //localhost 是mysql容器名字
     $ mysql:host=localhost;dbname=project 
     
-ssl 选择的是 letsencrypt ，需要自行配置
+ssl 选择的是 letsencrypt ，需要自行配置 [教程](https://www.jianshu.com/p/c5c9d071e395)
 
-    // 进入容器
+    // 进入容器 
     $ docker exec -it docker_nginx_1 bash 
     // 安装Certbot客户端 
     $ apt-get update && apt-get install certbot  &&  apt-get install cron

@@ -8,7 +8,7 @@ server {
     location /.well-known {
         root /app/quicklyBuild/www;
 
-        access_log  /var/log/nginx/challenge-access.log  main;
+        access_log off;
         allow all;
     }
 
