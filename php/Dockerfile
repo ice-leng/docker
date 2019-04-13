@@ -64,7 +64,7 @@ RUN printf "\n" | pecl install \
 # Install composer
 COPY ./composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer \
-    && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+    && composer config -g repo.packagist composer https://packagist.laravel-china.org \
     && composer global require "fxp/composer-asset-plugin:^1.4.2" \
     && composer clear-cache
 
