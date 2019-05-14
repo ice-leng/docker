@@ -28,6 +28,10 @@ server {
     root /app/quicklyBuild/www;
     index index.html index.php;
 
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
     gzip on;
     gzip_types    text/plain application/javascript application/x-javascript text/javascript text/xml text/css;
 
