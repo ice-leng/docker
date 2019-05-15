@@ -1,1 +1,1 @@
-*/1 * * * * root /usr/local/bin/php /app/growth/yii user-task/index  >> /var/log/php/yii-user-task.log
+*/1 * * * * root /usr/bin/flock -xn /var/log/php/cron.lock -c "timeout 200 /usr/local/bin/php /app/growth/yii user-task/index >> /var/log/php/yii-user-task.log 2>&1"
