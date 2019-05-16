@@ -7,7 +7,7 @@ apt-get install supervisor
 /etc/supervisor/conf.d
 
 # 使用 [解决方案](https://blog.csdn.net/kkevinyang/article/details/80539940)
-supervisorctl -c /etc/supervisor/supervisord.conf
+supervisord -c /etc/supervisor/supervisord.conf
 
 supervisorctl status
 
