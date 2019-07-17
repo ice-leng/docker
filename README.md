@@ -24,7 +24,7 @@ nginx-php7.0-mysql  docker
 
      {
         "registry-mirrors": [
-          "https://registry.docker-cn.com"
+          "https://docker.mirrors.ustc.edu.cn"
         ]
       }
       
