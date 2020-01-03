@@ -65,15 +65,11 @@ ssl 选择的是 letsencrypt ，需要自行配置 [教程](https://www.jianshu.
     $ docker exec -it docker_nginx_1 bash 
     // 安装Certbot客户端 
     $ apt-get update && apt-get install certbot  &&  apt-get install cron
-    // 获取证书 
-    $ certbot certonly --webroot -w /var/www/awaimai -d awaimai.com -d www.awaimai.com --config-dir=/xxx
     
+    // 获取证书 
     // 泛指
     $ certbot certonly -d *.amsimple.com --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory --config-dir=/xxx
-    // dns ping text 
-    $ dig -t txt  _acme-challenge.amsimple.com
-    
-    
+
     // 配置情况 nginx/vhosts/ssl.conf.back
     
     //certbot renew --config-dir=/app/docker/nginx/ssl/ --dry-run
