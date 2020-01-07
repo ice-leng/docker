@@ -7,7 +7,6 @@ services:
             - 80:80
             - 443:443
         volumes:
-            - ./nginx/vhosts:/etc/nginx/conf.d:ro
             - ./conf/nginx:/etc/nginx:ro
             - ${PROJECT_ROOT}:/app
             - ./log/nginx:/var/log/nginx
