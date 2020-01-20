@@ -58,10 +58,12 @@ RUN docker-php-ext-configure gd \
 # see http://stackoverflow.com/a/8154466/291573) for usage of `printf`
 RUN printf "\n" | pecl install \
         imagick \
-        mongodb && \
+        mongodb \
+        reids && \
     docker-php-ext-enable \
         imagick \
-        mongodb
+        mongodb \
+        reids
 
 # Install composer
 COPY ./composer.phar /usr/local/bin/composer
