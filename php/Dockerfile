@@ -59,11 +59,11 @@ RUN docker-php-ext-configure gd \
 RUN printf "\n" | pecl install \
         imagick \
         mongodb \
-        reids && \
+        redis && \
     docker-php-ext-enable \
         imagick \
         mongodb \
-        reids
+        redis
 
 # Install composer
 COPY ./composer.phar /usr/local/bin/composer

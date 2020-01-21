@@ -57,10 +57,10 @@ RUN docker-php-ext-configure gd \
 # see http://stackoverflow.com/a/8154466/291573) for usage of `printf`
 RUN printf "\n" | pecl install \
         imagick \
-        reids && \
+        redis && \
     docker-php-ext-enable \
         imagick \
-        reids
+        redis
 
 # Install composer
 COPY ./composer.phar /usr/local/bin/composer
