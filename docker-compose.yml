@@ -63,8 +63,6 @@ services:
     redis:
         image: redis:alpine
         container_name: redis
-        volumes:
-            - ./redis/redis_data:/data
         command: redis-server /usr/local/etc/redis/redis.conf
         networks:
             - database
