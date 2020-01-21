@@ -7,9 +7,9 @@ services:
             - 80:80
             - 443:443
         volumes:
-            - ./conf/nginx:/etc/nginx:ro
+            - ./nginx/vhosts:/etc/nginx/conf.d:ro
             - ${PROJECT_ROOT}:/app
-            - ./log/nginx:/var/log/nginx
+            - ./nginx/logs:/var/log/nginx
         networks:
             - server
         depends_on:
@@ -21,8 +21,7 @@ services:
             - 9000
         volumes:
             - ${PROJECT_ROOT}:/app
-            - ./log/php:/var/log/php
-            - ./conf/php:/usr/local/etc:ro
+            - ./php/logs:/var/log/php
         networks:
             - database
             - server
@@ -35,8 +34,7 @@ services:
         container_name: mysql
         volumes:
             - ./mysql/data:/var/lib/mysql
-            - ./conf/mysql:/etc/mysql:ro
-            - ./log/mysql:/var/log/mysql
+            - ./mysql/logs:/var/log/mysql
         networks:
             - database
         ports:
@@ -67,7 +65,6 @@ services:
         container_name: redis
         volumes:
             - ./redis/redis_data:/data
-            - ./conf/redis:/usr/local/etc/redis
         command: redis-server /usr/local/etc/redis/redis.conf
         networks:
             - database
