@@ -60,6 +60,20 @@ services:
 #            PMA_HOST: mysql
 #        restart: always
 
+#    hyperf:
+#        container_name: hyperf
+#        image: hyperf/hyperf
+#        volumes:
+#            - ../wwwroot:/wwwroot
+#        ports:
+#            - "9501:9501"
+#            - "9502:9502"
+#            - "9200:9200"
+#        networks:
+#            - hyperf
+#        # command: php /wwwroot/bin/hyperf.php start
+#        tty: true
+
     redis:
         image: redis
         container_name: redis
