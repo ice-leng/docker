@@ -35,6 +35,7 @@ services:
         volumes:
             - ./mysql/data:/var/lib/mysql
             - ./mysql/logs:/var/log/mysql
+            - ./mysql/conf:/etc/mysql
         networks:
             - database
         ports:
