@@ -65,7 +65,7 @@ services:
 #        container_name: hyperf
 #        image: hyperf/hyperf
 #        volumes:
-#            - ../wwwroot:/wwwroot
+#            - ${PROJECT_ROOT}:/app
 #        ports:
 #            - "9501:9501"
 #            - "9502:9502"
